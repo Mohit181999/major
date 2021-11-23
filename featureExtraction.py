@@ -40,7 +40,7 @@ all_services_mal = []
 apps_ben =  os.listdir(r'C:\Users\rahul\Desktop\Mohit\betch project\Benign apk')
 apps_mal = os.listdir(r'C:\Users\rahul\Desktop\Mohit\betch project\Malware apk')
 
-'''def get_permissions(path):
+def get_permissions(path):
   app = apk.APK(path)
   perms = app.get_permissions()  
   for p in perms:
@@ -298,39 +298,4 @@ for i in all_services_uni:
 
 malware_services_data.to_csv(r'C:\Users\rahul\Desktop\Mohit\betch project\malware_services_data.csv', index_label='Id')
 benign_services_data.to_csv(r'C:\Users\rahul\Desktop\Mohit\betch project\benign_services_data.csv', index_label='Id')
-'''
-
-dfb = pd.read_csv(r'C:\Users\rahul\Desktop\Mohit\betch project\benign_Perm_data.csv', index_col='Id')
-dfm = pd.read_csv(r'C:\Users\rahul\Desktop\Mohit\betch project\malware_Perm_data.csv', index_col='Id')
-
-all_perm_uni = list(dfm.columns)
-apps_ben = list(dfb.index)
-apps_mal = list(dfm.index)
-
-sorted_inc = []
-sorted_dec = []
-
-for k in range(0, 6):
-    rank = pd.Series()
-    print(k)
-    for j in all_perm_uni:
-        sumB = 0
-        sumM = 0
-        for i in apps_ben:
-            sumB += dfb.loc[i,j]
-        for i in apps_mal:
-            sumM += dfm.loc[i,j]
-        
-         # Use permisssions with support 0%, 5%, 10%, 15%, ..., 50%
-        if sumB >= (k)*0.05*len(apps_ben) and sumM >= (k)*0.05*len(apps_mal):
-            fB = sumB / len(apps_ben)
-            fM = sumM / len(apps_mal)
-            rank[j] = (fM - fB)
-    
-    inc_rank = rank.sort_values()
-    dec_rank = rank.sort_values(ascending=False)
-    sorted_inc.append(inc_rank)
-    sorted_dec.append(dec_rank)
-    df_dec = pd.DataFrame(sorted_dec)
-    df_dec.to_csv(r'C:\Users\rahul\Desktop\Mohit\betch project\dec.csv')
 
