@@ -37,8 +37,8 @@ all_recievers_mal = []
 all_services_mal = []
 
 
-apps_ben =  os.listdir(r'C:\Users\rahul\Desktop\Mohit\betch project\Benign apk')
-apps_mal = os.listdir(r'C:\Users\rahul\Desktop\Mohit\betch project\Malware apk')
+apps_ben =  os.listdir(filepath)
+apps_mal = os.listdir(filepath)
 
 def get_permissions(path):
   app = apk.APK(path)
@@ -120,7 +120,7 @@ def get_services(path):
 
 c = 0
 for file in apps_ben:
-    path = "C:\\Users\\rahul\\Desktop\\Mohit\\betch project\\Benign apk\\" + file
+    path = "folderpath" + file
     a = "int "+file
     print(a)
     all_recievers_ben.append(get_receivers(path))
@@ -141,7 +141,7 @@ print("MAL")
 for file in apps_mal:
     a = "perm "+file
     print(a)
-    path = "C:\\Users\\rahul\\Desktop\\Mohit\\betch project\\Malware apk\\" + file
+    path = "folder path" + file
     all_perm_mal.append(get_permissions(path))    
     all_intent_mal.append(get_intent(path))
     a = "int "+file
@@ -176,8 +176,8 @@ for i in all_perm_uni:
             col.append(0)
     malware_Perm_data[i] = col
 
-benign_Perm_data.to_csv(r'C:\Users\rahul\Desktop\Mohit\betch project\benign_Perm_data.csv', index_label='Id')
-malware_Perm_data.to_csv(r'C:\Users\rahul\Desktop\Mohit\betch project\malware_Perm_data.csv', index_label='Id')
+benign_Perm_data.to_csv(folderpath, index_label='Id')
+malware_Perm_data.to_csv(folderpath, index_label='Id')
 
 print("intent")
 benign_intent_data = pd.DataFrame(index=apps_ben)
@@ -201,8 +201,8 @@ for i in all_intent_uni:
     malware_intent_data[i] = col
 
 
-malware_intent_data.to_csv(r'C:\Users\rahul\Desktop\Mohit\betch project\malware_intent_data.csv', index_label='Id') 
-benign_intent_data.to_csv(r'C:\Users\rahul\Desktop\Mohit\betch project\benign_intent_data.csv', index_label='Id')
+malware_intent_data.to_csv(folderpath, index_label='Id') 
+benign_intent_data.to_csv(folderpath, index_label='Id')
 
 print("hardware components")
 benign_hardware_data = pd.DataFrame(index=apps_ben)
@@ -225,8 +225,8 @@ for i in all_hardware_uni:
     malware_hardware_data[i] = col
 
 
-malware_hardware_data.to_csv(r'C:\Users\rahul\Desktop\Mohit\betch project\malware_hardware_data.csv', index_label='Id')
-benign_hardware_data.to_csv(r'C:\Users\rahul\Desktop\Mohit\betch project\benign_hardware_data.csv', index_label='Id')
+malware_hardware_data.to_csv(folderpath, index_label='Id')
+benign_hardware_data.to_csv(folderpath, index_label='Id')
 
 print("content providers")
 benign_provider_data = pd.DataFrame(index=apps_ben)
@@ -249,8 +249,8 @@ for i in all_providers_uni:
     malware_provider_data[i] = col
 
 
-malware_provider_data.to_csv(r'C:\Users\rahul\Desktop\Mohit\betch project\malware_provider_data.csv', index_label='Id')
-benign_provider_data.to_csv(r'C:\Users\rahul\Desktop\Mohit\betch project\benign_provider_data.csv', index_label='Id')
+malware_provider_data.to_csv(folderpath, index_label='Id')
+benign_provider_data.to_csv(folderpath, index_label='Id')
 
 print("recievers")
 benign_recievers_data = pd.DataFrame(index=apps_ben)
@@ -273,8 +273,8 @@ for i in all_recievers_uni:
     malware_recievers_data[i] = col
 
 
-malware_recievers_data.to_csv(r'C:\Users\rahul\Desktop\Mohit\betch project\malware_recievers_data.csv', index_label='Id')
-benign_recievers_data.to_csv(r'C:\Users\rahul\Desktop\Mohit\betch project\benign_recievers_data.csv', index_label='Id')
+malware_recievers_data.to_csv(folderpath, index_label='Id')
+benign_recievers_data.to_csv(folderpath, index_label='Id')
 
 print("services")
 benign_services_data = pd.DataFrame(index=apps_ben)
@@ -296,6 +296,6 @@ for i in all_services_uni:
             col.append(0)
     malware_services_data[i] = col
 
-malware_services_data.to_csv(r'C:\Users\rahul\Desktop\Mohit\betch project\malware_services_data.csv', index_label='Id')
-benign_services_data.to_csv(r'C:\Users\rahul\Desktop\Mohit\betch project\benign_services_data.csv', index_label='Id')
+malware_services_data.to_csv(folderpath, index_label='Id')
+benign_services_data.to_csv(folderpath, index_label='Id')
 
